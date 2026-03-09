@@ -1,0 +1,7 @@
+{
+  "name": "volcengine-ata-subtitle",
+  "version": "1.0.0",
+  "author": "Double Dog Radio Project",
+  "license": "MIT",
+  "dependencies": ["requests"]
+}
