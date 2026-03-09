@@ -3,5 +3,6 @@
   "version": "1.0.0",
   "author": "Double Dog Radio Project",
   "license": "MIT",
+  "licenseTerms": "MIT License - see LICENSE file",
   "dependencies": ["requests"]
 }
