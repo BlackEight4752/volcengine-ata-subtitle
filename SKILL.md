@@ -4,6 +4,7 @@ description: "Generate subtitles with automatic time alignment using Volcengine 
 version: 1.0.0
 category: media-processing
 argument-hint: "[audio file] [text file] [output file]"
+license: MIT
 ---
 
 # Volcengine ATA Subtitle (自动打轴)
