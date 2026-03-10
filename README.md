@@ -15,7 +15,7 @@
 
 ## 📦 快速开始
 [创建豆包语音应用](https://console.volcengine.com/speech/app)
-此处获取APP ID、	Access Token、Secret Key
+自动字幕打轴应用，获取APP ID、	Access Token、Secret Key 有20小时试用
 <img width="1107" height="761" alt="398d4eed-4abe-497e-96c0-9fd0adae4f39" src="https://github.com/user-attachments/assets/7dfabbe1-b1d7-44e7-b071-007641d0cbad" />
 
 ### 安装
