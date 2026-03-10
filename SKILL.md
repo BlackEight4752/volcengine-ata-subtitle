@@ -58,83 +58,6 @@ python3 ~/.openclaw/workspace/skills/volcengine-ata-subtitle/volc_ata.py \
   --text storage/subtitle.txt \
   --output storage/subtitles/final.ass \
   --format ass
-
-# With custom API configuration
-python3 ~/.openclaw/workspace/skills/volcengine-ata-subtitle/volc_ata.py \
-  --audio storage/audio.wav \
-  --text storage/subtitle.txt \
-  --output storage/subtitles/final.srt \
-  --app-id 2942487587 \
-  --token your-token
-```
-
-## Workflow Integration
-
-### Full Subtitle Workflow
-
-```bash
-cd /vol2/1000/nvme/OpenClaw/double-dog-radio
-
-# 1. Extract audio from video (16kHz mono PCM)
-ffmpeg -i videos/batch-001/video-raw.mp4 \
-  -vn -acodec pcm_s16le -ar 16000 -ac 1 \
-  storage/audio.wav -y
-
-# 2. Prepare subtitle text (plain text, one sentence per line)
-cat > storage/subtitle.txt << 'TXT'
-第一句字幕
-第二句字幕
-第三句字幕
-TXT
-
-# 3. Generate time-aligned subtitles
-python3 ~/.openclaw/workspace/skills/volcengine-ata-subtitle/volc_ata.py \
-  --audio storage/audio.wav \
-  --text storage/subtitle.txt \
-  --output storage/subtitles/final.srt
-
-# 4. Add subtitles to video
-ffmpeg -i videos/batch-001/video-raw.mp4 \
-  -vf "subtitles=storage/subtitles/final.srt:force_style='FontName=Arial,FontSize=16,PrimaryColour=&HFFFFFF,OutlineColour=&H000000,Outline=2,Shadow=0,MarginV=20'" \
-  -c:a copy videos/batch-001/video-final.mp4
-```
-
-### One-Click Script
-
-Create `scripts/full-subtitle.sh`:
-
-```bash
-#!/bin/bash
-set -e
-
-VIDEO=$1
-TEXT_FILE=$2
-OUTPUT=$3
-
-echo "🎬 Starting subtitle workflow..."
-
-# 1. Extract audio
-echo "📹 Extracting audio..."
-ffmpeg -i "$VIDEO" -vn -acodec pcm_s16le -ar 16000 -ac 1 \
-  storage/temp-audio.wav -y
-
-# 2. ATA time alignment
-echo "🔥 Running ATA..."
-python3 ~/.openclaw/workspace/skills/volcengine-ata-subtitle/volc_ata.py \
-  --audio storage/temp-audio.wav \
-  --text "$TEXT_FILE" \
-  --output storage/temp-subtitle.srt
-
-# 3. Add subtitles
-echo "🎨 Adding subtitles..."
-ffmpeg -i "$VIDEO" \
-  -vf "subtitles=storage/temp-subtitle.srt:force_style='FontName=Arial,FontSize=16,PrimaryColour=&HFFFFFF,OutlineColour=&H000000,Outline=2,Shadow=0,MarginV=20'" \
-  -c:a copy "$OUTPUT"
-
-# 4. Cleanup
-rm -f storage/temp-audio.wav storage/temp-subtitle.srt
-
-echo "✅ Done! Output: $OUTPUT"
 ```
 
 ## Input Requirements
@@ -191,44 +114,13 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 Dialogue: 0,0:00:00.00,0:00:02.50,Default,,0,0,0,,第一句字幕
 ```
 
-## API Reference
-
-### Submit Task
-
-```bash
-curl -X POST "https://openspeech.bytedance.com/api/v1/vc/ata/submit" \
-  -H "Authorization: Bearer; YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "app": {
-      "appid": "YOUR_APP_ID"
-    },
-    "audio": "BASE64_ENCODED_AUDIO",
-    "text": "SUBTITLE_TEXT",
-    "format": "srt"
-  }'
-```
-
-### Query Result
-
-```bash
-curl -X POST "https://openspeech.bytedance.com/api/v1/vc/ata/query" \
-  -H "Authorization: Bearer; YOUR_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "id": "TASK_ID"
-  }'
-```
-
 ## Rules
 
 1. **Always check** that credentials are configured before making API calls.
 2. **Audio must be 16kHz mono PCM** - convert if necessary with ffmpeg.
 3. **Text should be plain** - no timestamps, no punctuation.
-4. **Poll interval**: 5 seconds between status checks.
-5. **Default format**: SRT (most compatible).
-6. **Handle errors gracefully** - display clear error messages.
-7. **Clean up temp files** after workflow completion.
+4. **Default format**: SRT (most compatible).
+5. **Handle errors gracefully** - display clear error messages.
 
 ## Troubleshooting
 
@@ -247,11 +139,6 @@ ffmpeg -i input.mp4 -ar 16000 -ac 1 audio.wav
 
 **Fix**: Check token format. Should be `Bearer; {token}` (with semicolon).
 
-### Subtitle Timing Off
-
-**Fix**: Adjust all timestamps in SRT file using subtitle editor.
-
 ## Related Documents
 
-- [SUBTITLE-WORKFLOW.md](../../double-dog-radio/SUBTITLE-WORKFLOW.md) - Full workflow guide
-- [Volcengine ATA Docs](https://www.volcengine.com/docs/4761/102177) - Official documentation
+- [Volcengine ATA Docs](https://www.volcengine.com/docs/6561/163043?lang=zh)
