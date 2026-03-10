@@ -4,7 +4,6 @@
 本技能由OpenClaw构建
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue)](https://github.com/openclaw/openclaw)
-[![创建豆包语音应用]([https://img.shields.io/badge/OpenClaw-Skill-blue](https://console.volcengine.com/speech/app))](https://github.com/openclaw/openclaw)
 
 ## ✨ 功能特性
 
@@ -15,7 +14,7 @@
 - 🚀 **一键工作流**：完整集成到视频制作流程
 
 ## 📦 快速开始
-[![创建豆包语音应用]([https://img.shields.io/badge/OpenClaw-Skill-blue](https://console.volcengine.com/speech/app))]
+[![创建豆包语音应用](https://console.volcengine.com/speech/app)
 此处获取APP ID、	Access Token、Secret Key
 <img width="1107" height="761" alt="398d4eed-4abe-497e-96c0-9fd0adae4f39" src="https://github.com/user-attachments/assets/7dfabbe1-b1d7-44e7-b071-007641d0cbad" />
 
