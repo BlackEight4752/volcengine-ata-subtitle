@@ -1,6 +1,6 @@
-# 🔥 Volcengine ATA Subtitle
+# 🔥 DouBao ATA Subtitle
 
-火山引擎 ATA (Automatic Time Alignment) 自动字幕打轴 Skill 
+豆包语音 ATA (Automatic Time Alignment) 自动字幕打轴 Skill 
 本技能由OpenClaw构建
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue)](https://github.com/openclaw/openclaw)
@@ -11,7 +11,6 @@
 - 📝 **多格式支持**：输出 SRT 或 ASS 格式字幕
 - 🔧 **灵活配置**：支持环境变量或配置文件两种鉴权方式
 - 🧪 **演示模式**：无 API 密钥也可体验基本功能
-- 🚀 **一键工作流**：完整集成到视频制作流程
 
 ## 📦 快速开始
 [创建豆包语音应用](https://console.volcengine.com/speech/app)
@@ -68,35 +67,6 @@ python3 ~/.openclaw/workspace/skills/volcengine-ata-subtitle/volc_ata.py \
   --format ass
 ```
 
-## 🎬 完整工作流
-
-```bash
-cd /vol2/1000/nvme/OpenClaw/double-dog-radio
-
-# 1. 从视频提取音频（16kHz 单声道 PCM）
-ffmpeg -i videos/batch-001/video-raw.mp4 \
-  -vn -acodec pcm_s16le -ar 16000 -ac 1 \
-  storage/audio.wav -y
-
-# 2. 准备字幕文本（纯文本，每句一行）
-cat > storage/subtitle.txt << 'TXT'
-第一句字幕
-第二句字幕
-第三句字幕
-TXT
-
-# 3. ATA 自动打轴
-python3 ~/.openclaw/workspace/skills/volcengine-ata-subtitle/volc_ata.py \
-  --audio storage/audio.wav \
-  --text storage/subtitle.txt \
-  --output storage/subtitles/final.srt
-
-# 4. 添加字幕到视频
-ffmpeg -i videos/batch-001/video-raw.mp4 \
-  -vf "subtitles=storage/subtitles/final.srt:force_style='FontName=Arial,FontSize=16'" \
-  -c:a copy videos/batch-001/video-final.mp4
-```
-
 ## 📋 输入要求
 
 ### 音频文件
@@ -138,8 +108,7 @@ volcengine-ata-subtitle/
 ## 🔗 相关链接
 
 - [OpenClaw 文档](https://github.com/openclaw/openclaw)
-- [火山引擎 ATA 官方文档](https://www.volcengine.com/docs/4761/102177)
-- [双狗叨叨项目](https://github.com/BlackEight4752/double-dog-radio)
+- [豆包语音快速入门]([https://www.volcengine.com/docs/4761/102177](https://www.volcengine.com/docs/6561/163043?lang=zh))
 
 ## 📄 许可证
 
