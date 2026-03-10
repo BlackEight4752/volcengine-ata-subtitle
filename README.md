@@ -1,9 +1,10 @@
 # 🔥 Volcengine ATA Subtitle
 
-火山引擎 ATA (Automatic Time Alignment) 自动字幕打轴 Skill - 为 OpenClaw 设计
-
+火山引擎 ATA (Automatic Time Alignment) 自动字幕打轴 Skill 
+本技能由OpenClaw构建
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue)](https://github.com/openclaw/openclaw)
+[![创建豆包语音应用]([https://img.shields.io/badge/OpenClaw-Skill-blue](https://console.volcengine.com/speech/app))](https://github.com/openclaw/openclaw)
 
 ## ✨ 功能特性
 
@@ -14,6 +15,9 @@
 - 🚀 **一键工作流**：完整集成到视频制作流程
 
 ## 📦 快速开始
+[![创建豆包语音应用]([https://img.shields.io/badge/OpenClaw-Skill-blue](https://console.volcengine.com/speech/app))](https://github.com/openclaw/openclaw)
+此处获取APP ID、	Access Token、Secret Key
+<img width="1107" height="761" alt="398d4eed-4abe-497e-96c0-9fd0adae4f39" src="https://github.com/user-attachments/assets/7dfabbe1-b1d7-44e7-b071-007641d0cbad" />
 
 ### 安装
 
@@ -118,13 +122,7 @@ ffmpeg -i input.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 audio.wav
 主人闹钟没响睡过头了
 我们俩轮流用鼻子拱他脸
 他以为地震了抱着枕头就跑
-```
-
-## 💰 成本参考
-
-| 服务 | 价格 | 说明 |
-|------|------|------|
-| 火山 ATA 打轴 | ~¥0.1/分钟 | 字幕自动对齐 |
+```|
 
 ## 📁 文件结构
 
